@@ -7,9 +7,9 @@ class Perceptron extends CI_Controller {
 	var $data_number = 0;
 	var $alpha = 1;
 	var $x_value = array();
-	var $net = array('0');
-	var $out = array('0');
-	var $target = array('0');
+	var $net = array(0);
+	var $out = array(0);
+	var $target = array(0);
 	var $d_weight = array();
 	var $weight_value = array();
 
@@ -27,6 +27,7 @@ class Perceptron extends CI_Controller {
 
 		$data['jumlah_x'] = $this->x_number;
 		$data['data_number'] = $this->data_number;
+		$data['alpha'] = $this->alpha;
 		$this->load->view('form_perceptron',$data);
 	}
 
@@ -37,11 +38,11 @@ class Perceptron extends CI_Controller {
 
 		$wanna_push = array();
 		for ($i=0; $i < $this->x_number ; $i++) {
-			array_push($wanna_push,'0');
+			array_push($wanna_push,0);
 		}
 		array_push($this->x_value,$wanna_push); //masukin initial X value di baris 0 nilainya 0
 
-		array_push($wanna_push,'0'); //tambahin 1 lagi kolom 0 buat bias
+		array_push($wanna_push,0); //tambahin 1 lagi kolom 0 buat bias
 		array_push($this->weight_value,$wanna_push); //masukin initial W value di baris 0 nilainya 0
 		array_push($this->d_weight,$wanna_push); //masukin initial delta_weight value di baris 0 nilainya 0
 
@@ -80,14 +81,20 @@ class Perceptron extends CI_Controller {
 				}
 				array_push($dw_push,$this->alpha*$this->target[$i]);
 				array_push($this->d_weight,$dw_push);
+			} else {
+				$dw_push = array();
+				for ($g=0; $g <= $this->x_number ; $g++) {
+					array_push($dw_push,0);
+				}
+				array_push($this->d_weight,$dw_push);
 			} //=== delta sudah terisi
 
 			$w_push = array();
 			for ($h=0; $h <= $this->x_number ; $h++) {
-				array_push($w_push,$this->d_weight[$i][$h]+$this->x_value[$i][$h])
+				array_push($w_push,$this->d_weight[$i][$h]+$this->weight_value[$i-1][$h]);
 			}
 			array_push($this->weight_value,$w_push); //=== weight baru sudah terisi
 		}
-		// var_dump($this->x_value);
+		var_dump($this->weight_value);
 	}
 }
