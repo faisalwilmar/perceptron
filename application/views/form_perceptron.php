@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         ?>
                         <td><input class="form-control" type="number" name="X<?php echo $j.$i;?>" required></td>
                       <?php } ?>
-                      <td><input class="form-control" type="number" name="target<?php echo $j;?>" required></td>
+                      <td><input class="form-control" type="number" name="target<?php echo $i;?>" required></td>
                     </tr>
                   <?php } ?>
                 </tbody>
