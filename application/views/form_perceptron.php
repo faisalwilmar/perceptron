@@ -60,6 +60,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="col-sm-2">
                 <div class="form-material form-material-primary floating">
                   <input class="form-control" type="number" id="alpha" name="alpha" max="10" value="1" required>
+                  <input class="form-control" type="hidden" name="variables" value="<?php echo $jumlah_x;?>">
+                  <input class="form-control" type="hidden" name="rows" value="<?php echo $data_number;?>">
                   <label for="alpha">Alpha Value</label>
                 </div>
               </div>
