@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="block">
         <div class="block-header">
           <h3 class="block-title">EPOCH <?php echo $epoch; ?></h3>
-          <form method="post" action="<?php echo base_url()."index.php/perceptron/process_lanjutan";?>">
+          <form method="post" action="<?php echo base_url()."index.php/perceptron/process";?>">
           <input class="form-control" type="hidden" name="epoch" value="<?php echo $epoch;?>">
         </div>
         <div class="block-content">
